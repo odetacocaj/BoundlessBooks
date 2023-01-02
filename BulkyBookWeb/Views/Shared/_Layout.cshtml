@@ -1,11 +1,14 @@
-﻿@using Microsoft.AspNetCore.Http
+﻿@using BulkyBook.Utility
+@using Microsoft.AspNetCore.Http
+@using BulkyBook.Utility
+@inject IHttpContextAccessor HttpContextAccessor
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BulkyBookWeb</title>
+    <title>@ViewData["Title"]  Boundless</title>
     <link rel="stylesheet" href="~/css/bootswatchTheme.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
@@ -16,7 +19,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">Boundless</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -37,7 +40,7 @@
         <li class="nav-item">
            
         </li>
-        
+        @if(User.IsInRole(SD.Role_Admin)){
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Content Managment</a>
           <div class="dropdown-menu">
@@ -46,13 +49,19 @@
               <a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a>
             <div class="dropdown-divider"></div>
              <a class="dropdown-item" asp-area="Admin" asp-controller="Company" asp-action="Index">Company</a>
-          </div>
+         <div class="dropdown-divider"></div>
+             <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Create User</a>
+         </div>
         </li>
+        }
+     
         <li class="nav-item"> 
             <a class="nav-link" asp-area="Customer" asp-controller="Cart" asp-action="Index">
-                 <i class="bi bi-cart3"></i>
+                 
+                @await Component.InvokeAsync("ShoppingCart")
             </a>
         </li>
+        
          <li class="nav-item"> 
             <a class="nav-link" asp-area="Admin" asp-controller="Order" asp-action="Index">
                 Manage Orders

@@ -24,6 +24,9 @@ namespace BulkyBook.Utility
         public const string PaymentStatusApproved = "Approved";
         public const string PaymentStatusDelayedpayment = "ApprovedForDelayedPayment";
         public const string PaymrnyStatusRejected = "Rejected";
-       
+
+
+        public const string SessionCart = "SessionShoppingCart";
+
     }
 }
