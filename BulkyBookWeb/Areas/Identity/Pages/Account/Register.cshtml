@@ -34,7 +34,7 @@ else
                  
                   <div class="form-floating py-2 col-6">
                 <input asp-for="Input.PhomeNumber" class="form-control"  aria-required="true" />
-                <label asp-for="Input.PhomeNumber"></label>
+                <label asp-for="Input.PhomeNumber">Phone Number</label>
                 <span asp-validation-for="Input.PhomeNumber" class="text-danger"></span>
             </div>
                   <div class="form-floating py-2 col-6">
@@ -107,7 +107,7 @@ else
                             <p>
                                 @foreach (var provider in Model.ExternalLogins)
                                 {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account"><i class="bi bi-facebook"></i> @provider.DisplayName</button>
                                 }
                             </p>
                         </div>
